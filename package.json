@@ -1,0 +1,44 @@
+{
+  "name": "xwrap-postgres",
+  "version": "0.0.1",
+  "description": "postgres adapter for xwrap",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/schematist/xwrap-postgres.git"
+  },
+  "keywords": [
+    "xwrap",
+    "git",
+    "promise",
+    "transaction",
+    "node",
+    "postgresql"
+  ],
+  "author": "Shaun Cutts <schematist@factfiber.com> (http://factfiber.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/schematist/xwrap-postgres/issues"
+  },
+  "homepage": "https://github.com/schematist/xwrap-postgres",
+  "devDependencies": {
+    "chai": "^2.2.0",
+    "coffee-script": "^1.9.1",
+    "mocha": "^2.2.1",
+    "sinon": "^1.14.1",
+    "sinon-chai": "^2.7.0",
+    "lodash": "^3.6.0"
+  },
+  "peerDependencies": {
+    "xwrap": "^0.0.2"
+  },
+  "dependencies": {
+    "bluebird": "^2.9.15",
+    "pg": "^4.3.0",
+    "pg-escape": "0.0.3",
+    "xwrap": "0.0.2"
+  }
+}
