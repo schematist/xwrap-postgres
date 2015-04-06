@@ -1,2 +1,2 @@
 # xwrap-postgres
-postgres adapter for xwrap
+postgres adapter for [xwrap](https://github.com/schematist/xwrap)
