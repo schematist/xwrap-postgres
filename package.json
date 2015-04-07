@@ -34,12 +34,11 @@
     "lodash": "^3.6.0"
   },
   "peerDependencies": {
-    "xwrap": "^0.0.2"
+    "xwrap": "^0.x"
   },
   "dependencies": {
     "bluebird": "^2.9.15",
     "pg": "^4.3.0",
-    "pg-escape": "0.0.3",
-    "xwrap": "0.0.2"
+    "pg-escape": "0.0.3"
   }
 }

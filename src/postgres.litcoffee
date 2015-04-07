@@ -7,10 +7,11 @@ XWrap Postgres Adapter
     Promise.promisifyAll(pg)
     escape = require 'pg-escape'
 
+    _connect = pg.connect
+
     class PostgresAdapter
 
       constructor: (@options)->
-        @._connect = pg.connect
         @features = xwrap:
           basic: true
           subtransactions: true
@@ -24,13 +25,22 @@ Low-level interface.
         self = this
         close = null
         new Promise (res, rej)->
-          self._connect.call pg, self.options, (err, client, done)->
+          _connect.call pg, self.options, (err, client, done)->
             if err?
               return rej(err)
             close = done
             res(client)
         .disposer ->
           close() if close?
+
+Convenience interface for shared client in transaction, or standard
+client out of transaction if no transaction.
+
+      getClient: (callerName)->
+        self = this
+        @xtransaction.client(callerName).then (client)->
+          return client ? self.getRawClient()
+
 
       openTransaction: (client)->
         client.queryAsync('begin')
@@ -69,5 +79,6 @@ Wraps "connect" which is typical interface to pool. Currently doesn't wrap
                 return rej(err) if err?
                 res()
 
-    module.exports = (settings)->
+    module.exports = initialize = (settings)->
       new PostgresAdapter(settings)
+    initialize.PostgresAdapter = PostgresAdapter
