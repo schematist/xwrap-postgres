@@ -19,4 +19,5 @@ The following needs to be defined before requiring xwrap/test/base
           client.queryAsync("select '#{qstring}'")
       }
 
-    module.exports = require 'xwrap/test/base'
+    exports = module.exports = require 'xwrap/test/base'
+    exports.settings = settings

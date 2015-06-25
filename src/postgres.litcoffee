@@ -66,6 +66,14 @@ if there is an open transaction above us.
 Wraps "connect" which is typical interface to pool. Currently doesn't wrap
 "new Client()" as this is often used to assure a standalone connection.
 
+** NOT WORKING **
+
+1) We need to wrap async version only so we have access to client.
+2) "done" -- dummy passed to client, but we are actually done when
+  promise returned by callback resolves.
+
+3) Impossible to wrap raw "connect"...
+
       wrap: ->
         self = this
         pg.connect = (connStr, callback)->
