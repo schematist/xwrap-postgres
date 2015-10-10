@@ -19,6 +19,20 @@ XWrap Postgres Adapter
           clientMethods: [ 'queryAsync' ]
           clientDataAttributes: [ 'connectionParameters' ]
 
+      close: ()->
+        xwrap = require 'xwrap'
+        return xwrap.disconnect(@id)
+
+      disconnect: ()->
+        pool = pg.pools.all[JSON.stringify(@options)]
+        Promise.try ->
+          return if !pool?
+          return new Promise (res)->
+            pool.drain ->
+              pool.destroyAllNow()
+              res()
+
+
 Low-level interface.
 
       getRawClient: ()->
