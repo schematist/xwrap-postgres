@@ -55,6 +55,12 @@ client out of transaction if no transaction.
         @xtransaction.client(callerName).then (client)->
           return client ? self.getRawClient()
 
+      withClient: (callerName, cb)->
+        if typeof cb != 'function'
+          cb = callerName
+          callerName = '???'
+        @getClient(callerName).then (cpromise)->
+          Promise.using(cpromise, cb)
 
       openTransaction: (client)->
         client.queryAsync('begin')
