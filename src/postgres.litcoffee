@@ -29,8 +29,7 @@ XWrap Postgres Adapter
           return if !pool?
           return new Promise (res)->
             pool.drain ->
-              pool.destroyAllNow()
-              res()
+              pool.destroyAllNow(res)
 
 
 Low-level interface.

@@ -28,10 +28,11 @@
   "devDependencies": {
     "chai": "^2.2.0",
     "coffee-script": "^1.9.1",
+    "lodash": "^3.6.0",
+    "logger-facade-console-plugin-nodejs": "0.0.3",
     "mocha": "^2.2.1",
     "sinon": "^1.14.1",
-    "sinon-chai": "^2.7.0",
-    "lodash": "^3.6.0"
+    "sinon-chai": "^2.7.0"
   },
   "peerDependencies": {
     "xwrap": "^0.x",

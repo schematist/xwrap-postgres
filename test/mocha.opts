@@ -1,0 +1,3 @@
+--recursive 
+-u bdd 
+--compilers coffee:coffee-script,litcoffee:coffee-script/register
