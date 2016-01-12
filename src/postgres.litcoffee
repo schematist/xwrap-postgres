@@ -24,13 +24,15 @@ XWrap Postgres Adapter
         return xwrap.disconnect(@id)
 
       disconnect: ()->
-        pool = pg.pools.all[JSON.stringify(@options)]
+        key = JSON.stringify(@options)
+        pool = pg.pools.all[key]
         Promise.try ->
           return if !pool?
           return new Promise (res)->
             pool.drain ->
-              pool.destroyAllNow(res)
-
+              pool.destroyAllNow ()->
+                delete pg.pools.all[key]
+                res()
 
 Low-level interface.
 
