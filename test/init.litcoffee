@@ -15,8 +15,6 @@ The following needs to be defined before requiring xwrap/test/base
           settings: settings
           id: 'postgres'
         clientMethods: ['queryAsync']
-        query: (client, qstring)->
-          client.queryAsync("select '#{qstring}'")
       }
 
     exports = module.exports = require 'xwrap/test/base'
