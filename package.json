@@ -36,12 +36,12 @@
   },
   "peerDependencies": {
     "xwrap": "^0.x",
-    "pg": "^4.x"
+    "pg": "^6.x"
   },
   "dependencies": {
     "bluebird": "^2.9.15",
+    "pg": "^6.1.2",
     "pg-escape": "0.0.3",
-    "xwrap": "^0.x",
-    "pg": "^4.x"
+    "xwrap": "^0.x"
   }
 }
