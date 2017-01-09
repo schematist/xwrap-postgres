@@ -26,7 +26,7 @@ XWrap Postgres Adapter
       disconnect: ()->
         self = this
         key = JSON.stringify(@options)
-        pool = pg.pools.all[key]
+        pool = pg._pools.all[key]
         Promise.try ->
           return if !pool?
           return new Promise (res)->
