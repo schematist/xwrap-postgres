@@ -1,6 +1,6 @@
 {
   "name": "xwrap-postgres",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "postgres adapter for xwrap",
   "main": "index.js",
   "scripts": {
