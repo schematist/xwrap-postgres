@@ -21,6 +21,10 @@ XWrap Postgres Adapter
           ssl: @options.ssl
           user: @options.user
         }
+        @_dbOptions.url = "postgres://" + @options.user +
+          '@' + @options.host + ':' + @options.port +
+          '/' + @options.database + '?ssl=' + (@options.ssl || false)
+
         @features = xwrap:
           basic: true
           subtransactions: true
@@ -34,15 +38,16 @@ XWrap Postgres Adapter
 
       disconnect: ()->
         self = this
-        key = JSON.stringify(@_dbOptions)
-        debugger
-        pool = pg._pools.all[key]
+        key = @_dbOptions.url
+        poolKey = if pg._pools then '_pools' else 'pools'
+        pool = pg[poolKey]?[key]
         Promise.try ->
           return if !pool?
+          pool = pool.pool if pool.pool?
           return new Promise (res)->
             pool.drain ->
               pool.destroyAllNow ()->
-                delete pg.pools.all[key]
+                delete pg[poolKey]?[key]
                 res()
         .finally ->
           self.close()
@@ -53,7 +58,7 @@ Low-level interface.
         self = this
         close = null
         new Promise (res, rej)->
-          _connect.call pg, self.options, (err, client, done)->
+          _connect.call pg, self._dbOptions.url, (err, client, done)->
             if err?
               return rej(err)
             close = done
