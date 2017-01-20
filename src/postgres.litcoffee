@@ -12,6 +12,15 @@ XWrap Postgres Adapter
     class PostgresAdapter
 
       constructor: (@options)->
+        # separate out effective options for postgres to ensure
+        # pool has unique identity.
+        @_dbOptions = {
+          database: @options.database
+          host: @options.host
+          port: @options.port
+          ssl: @options.ssl
+          user: @options.user
+        }
         @features = xwrap:
           basic: true
           subtransactions: true
@@ -25,7 +34,8 @@ XWrap Postgres Adapter
 
       disconnect: ()->
         self = this
-        key = JSON.stringify(@options)
+        key = JSON.stringify(@_dbOptions)
+        debugger
         pool = pg._pools.all[key]
         Promise.try ->
           return if !pool?

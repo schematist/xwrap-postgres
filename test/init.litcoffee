@@ -14,6 +14,8 @@ The following needs to be defined before requiring xwrap/test/base
           adapter: postgres(settings)
           settings: settings
           id: 'postgres'
+        query: (client, args...)->
+          return client.queryAsync(args...)
         clientMethods: ['queryAsync']
       }
 
