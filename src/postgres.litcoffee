@@ -14,16 +14,16 @@ XWrap Postgres Adapter
       constructor: (@options)->
         # separate out effective options for postgres to ensure
         # pool has unique identity.
-        @_dbOptions = {
-          database: @options.database
-          host: @options.host
-          port: @options.port
-          ssl: @options.ssl
-          user: @options.user
+        @_dbOptions = o = {
+          database: @options.database ? process.env.PGDATABASE
+          host: @options.host  ? process.env.PGHOST
+          port: @options.port ? process.env.PGPORT
+          ssl: @options.ssl ? process.env.PGSSLMODE
+          user: @options.user ? process.env.PGUSER
         }
-        @_dbOptions.url = "postgres://" + @options.user +
-          '@' + @options.host + ':' + @options.port +
-          '/' + @options.database + '?ssl=' + (@options.ssl || false)
+        @_dbOptions.url = "postgres://" + o.user +
+          '@' + o.host + ':' + o.port +
+          '/' + o.database + '?ssl=' + (o.ssl || false)
 
         @features = xwrap:
           basic: true
