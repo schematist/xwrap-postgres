@@ -31,7 +31,7 @@ balanced-match@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
 
-bluebird@^2.9.14, bluebird@^2.9.15, bluebird@^2.9.21, bluebird@^2.x:
+bluebird@^2.9.14, bluebird@^2.9.21, bluebird@^2.x:
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-2.11.0.tgz#534b9033c022c9579c56ba3b3e5a5caafbb650e1"
 
@@ -64,10 +64,6 @@ chai@^4.1.2:
 check-error@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/check-error/-/check-error-1.0.2.tgz#574d312edd88bb5dd8912e9286dd6c0aed4aac82"
-
-coffee-script@^1.10.0:
-  version "1.12.7"
-  resolved "https://registry.yarnpkg.com/coffee-script/-/coffee-script-1.12.7.tgz#c05dae0cb79591d05b3070a8433a98c9a89ccc53"
 
 coffeescript@^1.x:
   version "1.12.7"
@@ -155,11 +151,7 @@ lodash.get@^4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
 
-lodash@^3.6.0:
-  version "3.10.1"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
-
-lodash@^4.17.10, lodash@^4.6.1:
+lodash@^4.14.0, lodash@^4.17.10, lodash@^4.6.1:
   version "4.17.10"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
 
@@ -173,6 +165,13 @@ logger-facade-console-plugin-nodejs@2.0.0:
 logger-facade-nodejs@0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/logger-facade-nodejs/-/logger-facade-nodejs-0.0.3.tgz#01638b978091fff4862083e7a6697e8e5a55165c"
+
+logger-facade-nodejs@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/logger-facade-nodejs/-/logger-facade-nodejs-2.0.0.tgz#1800b6718c6c068325a3cabb21ac2f08af574893"
+  dependencies:
+    lodash "^4.14.0"
+    moment "^2.20.1"
 
 lolex@^2.3.2, lolex@^2.4.2:
   version "2.7.0"
@@ -210,7 +209,7 @@ mocha@^5.2.0:
     mkdirp "0.5.1"
     supports-color "5.4.0"
 
-moment@^2.12.0:
+moment@^2.12.0, moment@^2.20.1:
   version "2.22.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.1.tgz#529a2e9bf973f259c9643d237fda84de3a26e8ad"
 
@@ -365,13 +364,12 @@ xtend@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
 
-xwrap@^0.x:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/xwrap/-/xwrap-0.3.2.tgz#a7a52f7fb2be766f3eb37cb725aba6a38c64d288"
+xwrap@^0.3.8:
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/xwrap/-/xwrap-0.3.8.tgz#7cdc941b0978d4298c3f6c8ef37cf10a3b481638"
   dependencies:
     async-pool "^0.2.3"
     async-proxy-pool "^0.1.2"
-    bluebird "^2.9.15"
-    coffee-script "^1.10.0"
-    lodash "^3.6.0"
-    logger-facade-nodejs "0.0.3"
+    bluebird "^2.x"
+    lodash "^4.17.10"
+    logger-facade-nodejs "2.0.0"
