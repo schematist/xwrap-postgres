@@ -26,22 +26,23 @@
   },
   "homepage": "https://github.com/schematist/xwrap-postgres",
   "devDependencies": {
-    "chai": "^2.2.0",
-    "coffee-script": "^1.9.1",
-    "lodash": "^3.6.0",
-    "logger-facade-console-plugin-nodejs": "0.0.3",
-    "mocha": "^2.2.1",
-    "sinon": "^1.14.1",
-    "sinon-chai": "^2.7.0"
+    "chai": "^4.1.2",
+    "coffeescript": "^2.3.1",
+    "lodash": "^4.17.10",
+    "logger-facade-console-plugin-nodejs": "2.0.0",
+    "mocha": "^5.2.0",
+    "sinon": "^5.0.10",
+    "sinon-chai": "^3.1.0"
   },
   "peerDependencies": {
-    "xwrap": "^0.x",
-    "pg": "^6.x"
+    "bluebird": "^2.x",
+    "pg": "^7.x",
+    "xwrap": "^0.x"
   },
   "dependencies": {
-    "bluebird": "^2.9.15",
-    "pg": "^6.1.2",
-    "pg-escape": "0.0.3",
+    "bluebird": "^2.x",
+    "pg": "^7.4.3",
+    "pg-escape": "0.2.0",
     "xwrap": "^0.x"
   }
 }
