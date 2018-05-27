@@ -46,16 +46,18 @@ XWrap Postgres Adapter
       disconnect: ()->
         self = this
         key = @_dbOptions.url
-        console.log("pools", Object.keys(pools))
+        console.log("pools", Object.keys(pools), key)
         pool = pools[key]
         Promise.try ->
           return if !pool?
           pool = pool.pool if pool.pool?
-          return new Promise (res)->
-            pool.drain ->
-              pool.destroyAllNow ()->
-                delete pg[poolKey]?[key]
-                res()
+          return pool.end()
+          # return new Promise (res)->
+          #   pool
+          #   pool.drain ->
+          #     pool.destroyAllNow ()->
+          #       delete pg[poolKey]?[key]
+          #       res()
         .finally ->
           self.close()
 
