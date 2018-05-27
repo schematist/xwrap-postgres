@@ -7,8 +7,13 @@ XWrap Postgres Adapter
     Promise.promisifyAll(pg)
     escape = require 'pg-escape'
 
+    pools = {}
+
     _connect = (config, cb) =>
-      pool = new pg.Pool(config)
+      pool = pools[config.url]
+      if !pool?
+        pool = new pg.Pool(config)
+        pools[config.url] = pool
       return pool.connect(cb)
 
     class PostgresAdapter
@@ -41,9 +46,8 @@ XWrap Postgres Adapter
       disconnect: ()->
         self = this
         key = @_dbOptions.url
-        console.log("pools", Object.keys(pg._pools))
-        poolKey = if pg._pools then '_pools' else 'pools'
-        pool = pg[poolKey]?[key]
+        console.log("pools", Object.keys(pools))
+        pool = pools[key]
         Promise.try ->
           return if !pool?
           pool = pool.pool if pool.pool?
