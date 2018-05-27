@@ -37,12 +37,12 @@
   "peerDependencies": {
     "bluebird": "^2.x",
     "pg": "^7.x",
-    "xwrap": "^0.x"
+    "xwrap": "^schematist/xwrap"
   },
   "dependencies": {
     "bluebird": "^2.x",
     "pg": "^7.4.3",
     "pg-escape": "0.2.0",
-    "xwrap": "^0.3.8"
+    "xwrap": "schematist/xwrap"
   }
 }

@@ -41,17 +41,20 @@ XWrap Postgres Adapter
 
       close: ()->
         xwrap = require 'xwrap'
+        console.log('disconnect xwrap')
         return xwrap.disconnect(@id)
 
       disconnect: ()->
         self = this
         key = @_dbOptions.url
-        console.log("pools", Object.keys(pools), key)
         pool = pools[key]
         Promise.try ->
           return if !pool?
+          delete pools[key]
           pool = pool.pool if pool.pool?
-          return pool.end()
+          console.log(
+            "end pool; active:", pool.totalCount - pool.idleCount)
+          pool.end()
           # return new Promise (res)->
           #   pool
           #   pool.drain ->
@@ -73,7 +76,10 @@ Low-level interface.
             close = done
             res(client)
         .disposer ->
+          console.log('closing')
           close() if close?
+          pool = pools[self._dbOptions.url]
+          console.log("active", pool.totalCount - pool.idleCount)
 
 Convenience interface for shared client in transaction, or standard
 client out of transaction if no transaction.
@@ -88,6 +94,7 @@ client out of transaction if no transaction.
           cb = callerName
           callerName = '???'
         @getClient(callerName).then (cpromise)->
+          console.log('use client')
           Promise.using(cpromise, cb)
 
       openTransaction: (client)->

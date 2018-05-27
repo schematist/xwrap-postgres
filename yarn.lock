@@ -364,9 +364,9 @@ xtend@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
 
-xwrap@^0.3.8:
-  version "0.3.9"
-  resolved "https://registry.yarnpkg.com/xwrap/-/xwrap-0.3.9.tgz#1d0b23c9cf0003392c8c026c84741851eb6949f2"
+xwrap@schematist/xwrap:
+  version "0.3.10"
+  resolved "https://codeload.github.com/schematist/xwrap/tar.gz/053b73608b05be0eba3ff5983acceaafa6149fed"
   dependencies:
     async-pool "^0.2.3"
     async-proxy-pool "^0.1.2"
