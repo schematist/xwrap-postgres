@@ -41,7 +41,6 @@ XWrap Postgres Adapter
 
       close: ()->
         xwrap = require 'xwrap'
-        console.log('disconnect xwrap')
         return xwrap.disconnect(@id)
 
       disconnect: ()->
@@ -52,8 +51,10 @@ XWrap Postgres Adapter
           return if !pool?
           delete pools[key]
           pool = pool.pool if pool.pool?
-          console.log(
-            "end pool; active:", pool.totalCount - pool.idleCount)
+          if pool.totalCount - pool.idleCount > 0
+            console.log(
+              "WARNING: end pool; active connections:",
+              pool.totalCount - pool.idleCount)
           pool.end()
           # return new Promise (res)->
           #   pool
@@ -76,10 +77,9 @@ Low-level interface.
             close = done
             res(client)
         .disposer ->
-          console.log('closing')
           close() if close?
-          pool = pools[self._dbOptions.url]
-          console.log("active", pool.totalCount - pool.idleCount)
+          # pool = pools[self._dbOptions.url]
+          # console.log("active", pool.totalCount - pool.idleCount)
 
 Convenience interface for shared client in transaction, or standard
 client out of transaction if no transaction.
