@@ -1,3 +1,4 @@
---recursive 
+--recursive
 -u bdd
---compilers coffee:coffeescript,litcoffee:coffeescript/register
+--require coffeescript/register
+test/**/test-*.litcoffee

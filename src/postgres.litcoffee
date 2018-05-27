@@ -7,7 +7,9 @@ XWrap Postgres Adapter
     Promise.promisifyAll(pg)
     escape = require 'pg-escape'
 
-    _connect = pg.connect
+    _connect = (config, cb) =>
+      pool = new pg.Pool(config)
+      return pool.connect(cb)
 
     class PostgresAdapter
 
@@ -16,8 +18,8 @@ XWrap Postgres Adapter
         # pool has unique identity.
         @_dbOptions = o = {
           database: @options.database ? process.env.PGDATABASE
-          host: @options.host  ? process.env.PGHOST
-          port: @options.port ? process.env.PGPORT
+          host: @options.host  ? process.env.PGHOST ? 'localhost'
+          port: @options.port ? process.env.PGPORT ? '5432'
           ssl: @options.ssl ? process.env.PGSSLMODE
           user: @options.user ? process.env.PGUSER
         }
@@ -39,6 +41,7 @@ XWrap Postgres Adapter
       disconnect: ()->
         self = this
         key = @_dbOptions.url
+        console.log("pools", Object.keys(pg._pools))
         poolKey = if pg._pools then '_pools' else 'pools'
         pool = pg[poolKey]?[key]
         Promise.try ->
@@ -58,7 +61,7 @@ Low-level interface.
         self = this
         close = null
         new Promise (res, rej)->
-          _connect.call pg, self._dbOptions.url, (err, client, done)->
+          _connect self._dbOptions, (err, client, done)->
             if err?
               return rej(err)
             close = done

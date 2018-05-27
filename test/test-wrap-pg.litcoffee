@@ -15,7 +15,7 @@ promises.
       before ->
         {xtransaction} = global.getXWrap()
 
-      it '.connect returns transaction client', ->
+      it.skip '.connect returns transaction client', ->
         xtransaction (transaction)->
           pg.connectAsync(settings).spread (client)->
             client.queryAsync('select 1')

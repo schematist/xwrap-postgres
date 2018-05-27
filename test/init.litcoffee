@@ -6,7 +6,7 @@ Setup postgres adapter test.
 
 The following needs to be defined before requiring xwrap/test/base
 
-    settings = JSON.parse fs.readFileSync(__dirname + '/config.json')        
+    settings = JSON.parse fs.readFileSync(__dirname + '/config.json')
 
     global.getXWrap = ->
       return {
