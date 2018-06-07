@@ -12,16 +12,23 @@ assertion-error@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/assertion-error/-/assertion-error-1.1.0.tgz#e60b6b0e8f301bd97e5375215bda406c85118c0b"
 
-async-pool@^0.2.3, async-pool@^0.2.5:
+async-pool@^0.2.5:
   version "0.2.5"
   resolved "https://registry.yarnpkg.com/async-pool/-/async-pool-0.2.5.tgz#87aa908b94f6c27c184ec88b967c17c77aa3ef94"
   dependencies:
     bluebird "^2.9.14"
     logger-facade-nodejs "0.0.3"
 
-async-proxy-pool@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/async-proxy-pool/-/async-proxy-pool-0.1.2.tgz#d2fd9c6ed57abfbbe4f465f67091e93e80f2c6b7"
+async-pool@^0.2.6:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/async-pool/-/async-pool-0.2.6.tgz#cd683e947800b7a9bc9b558cc39c5222dac4e6a6"
+  dependencies:
+    bluebird "^2.9.14"
+    logger-facade-nodejs "0.0.3"
+
+async-proxy-pool@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/async-proxy-pool/-/async-proxy-pool-0.1.4.tgz#2eea6ba2901839a302730863404987b4ed05c973"
   dependencies:
     async-pool "^0.2.5"
     bluebird "^2.9.21"
@@ -365,11 +372,11 @@ xtend@^4.0.0:
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
 
 xwrap@schematist/xwrap:
-  version "0.3.11"
-  resolved "https://codeload.github.com/schematist/xwrap/tar.gz/44d2d933fc7867872d1aaa0c8c2e70daf57e5840"
+  version "0.3.12"
+  resolved "https://codeload.github.com/schematist/xwrap/tar.gz/b9bededa539bb5139f47a28d3b5e3bd309fbb12c"
   dependencies:
-    async-pool "^0.2.3"
-    async-proxy-pool "^0.1.2"
+    async-pool "^0.2.6"
+    async-proxy-pool "^0.1.4"
     bluebird "^2.x"
     lodash "^4.17.10"
     logger-facade-nodejs "2.0.0"
