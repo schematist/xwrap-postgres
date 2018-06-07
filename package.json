@@ -37,7 +37,7 @@
   "peerDependencies": {
     "bluebird": "^2.x",
     "pg": "^7.x",
-    "xwrap": "^schematist/xwrap"
+    "xwrap": "schematist/xwrap"
   },
   "dependencies": {
     "bluebird": "^2.x",
